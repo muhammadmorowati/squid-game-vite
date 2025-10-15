@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react"
 import Contestant from "./Contestant"
 import DollMusic from "./DollMusic"

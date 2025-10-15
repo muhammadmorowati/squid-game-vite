@@ -36,7 +36,7 @@ export const useGameStore = create<GameState>((set, get) => {
 
     return {
       x: Math.random() * (window.innerWidth - window.innerWidth * 0.052),
-      y: window.innerHeight * 0.89,
+      y: window.innerHeight * 0.87,
       name: 'player',
       gameOver: false,
       speed: playerSpeedFactor < 1.3
@@ -52,7 +52,7 @@ export const useGameStore = create<GameState>((set, get) => {
 
     return Array.from({ length: 50 }, (_, i) => ({
       x: Math.random() * (window.innerWidth - window.innerWidth * 0.052),
-      y: screenHeight,
+      y: screenHeight * 0.87,
       name: i.toString(),
       gameOver: false,
       speed: speedFactor < 1.3
