@@ -1,5 +1,4 @@
 import { useGameStore } from "../hooks/UseGameStore"
-import Winner from "./Winner"
 
 const Finish = () => {
 
@@ -20,8 +19,8 @@ const Finish = () => {
             </div>
 
             {allFinished && !gameOver && (
-                // <Winner />
-                <></>
+                <>
+                </>
             )}
         </>
     )

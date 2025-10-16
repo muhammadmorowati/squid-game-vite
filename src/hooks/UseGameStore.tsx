@@ -52,8 +52,8 @@ export const useGameStore = create(
         gameOver: false,
         speed:
           playerSpeedFactor < 1.3
-            ? random.real(playerSpeedFactor , playerSpeedFactor * 2, true)
-            : random.real(playerSpeedFactor * 2, playerSpeedFactor * 3, true),
+            ? random.real(playerSpeedFactor * 0.8 , playerSpeedFactor * 1.3, true)
+            : random.real(playerSpeedFactor * 1.3, playerSpeedFactor * 1.8, true),
         winner: false,
       }
     }
