@@ -15,7 +15,7 @@ const Finish = () => {
                 <span
           className="absolute left-0 top-0 w-full h-full pointer-events-none"
           style={{
-            borderTop: "6px solid black",
+            borderTop: "14px solid black",
             transform: "rotate(-45deg)",
             transformOrigin: "0 0",
             opacity: 0.9,

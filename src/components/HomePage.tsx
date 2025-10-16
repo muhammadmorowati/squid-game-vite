@@ -20,9 +20,14 @@ const HomePage = () => {
           <h1 className="text-2xl font-medium text-white my-3">
             Squid Game Online
           </h1>
-            <button onClick={() => setGameStarted(true)} color="secondary" >
-              Start Game
-            </button>
+         <button
+            className="font-sans cursor-pointer mt-4 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg shadow-lg transition duration-300"
+            onClick={() => setGameStarted(true)}
+          >
+
+            Start Game
+
+          </button>
         </div>
       </div>
     )
