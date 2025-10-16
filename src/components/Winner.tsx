@@ -9,7 +9,7 @@ const Winner = () => {
       <p className="text-xl mb-8">Congratulations, you finished the game!</p>
       <button
         onClick={resetGame}
-        className="px-6 py-3 bg-green-500 hover:bg-green-600 rounded-lg text-white font-semibold transition-colors duration-200"
+        className="px-6 py-3 bg-green-500 hover:bg-green-600 rounded-lg text-fuchsia-800 font-semibold transition-colors duration-200"
       >
         Play Again
       </button>

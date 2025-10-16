@@ -3,7 +3,7 @@ import { Howl } from 'howler'
 import { useGameStore } from '../hooks/UseGameStore'
 
 const DollMusic = () => {
-  const { greenLight, greenLightCounter } = useGameStore()
+  const { greenLight, greenLightCounter,timeLeft } = useGameStore()
   const greenLightSound = useRef<Howl | null>(null)
 
   useEffect(() => {
@@ -17,6 +17,12 @@ const DollMusic = () => {
     }
 
     const sound = greenLightSound.current
+
+    // ✅ Stop music if time is up
+    if (timeLeft == 0) {
+      sound.stop()
+      return
+    }
 
     if (greenLight) {
       // Convert counter (~60fps) → milliseconds
