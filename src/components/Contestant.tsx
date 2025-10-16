@@ -53,8 +53,8 @@ const Contestant = (props: Props) => {
                             <img 
                             src={'/player.png'}
                              alt={'player'}
-                             width={50} 
-                            height={50} 
+                             width={40} 
+                            height={40} 
                             className='max-sm:w-10 max-sm:h-12' 
                             />
                     )}

@@ -52,8 +52,8 @@ export const useGameStore = create(
         gameOver: false,
         speed:
           playerSpeedFactor < 1.3
-            ? random.real(playerSpeedFactor * 1.7, playerSpeedFactor * 2.6, true)
-            : random.real(playerSpeedFactor * 2.1, playerSpeedFactor * 3, true),
+            ? random.real(playerSpeedFactor , playerSpeedFactor * 2, true)
+            : random.real(playerSpeedFactor * 2, playerSpeedFactor * 3, true),
         winner: false,
       }
     }
@@ -119,7 +119,7 @@ export const useGameStore = create(
         if (!c.winner && !c.gameOver) {
           if (greenLight && Math.random() < 0.7) {
             c.y -= c.speed * delta
-          } else if (!greenLight && Math.random() * 1000 < 1 && c.y > 50) {
+          } else if (!greenLight && Math.random() * 1000 < 1 && c.y > 20) {
             c.gameOver = true
           }
         }
@@ -189,10 +189,10 @@ export const useGameStore = create(
               clearInterval(timerId!)
               const updatedPlayer = get().player
               const updatedContestants = get().contestants.map(c => {
-                if (c.y > 50) c.gameOver = true
+                if (c.y > 20) c.gameOver = true
                 return c
               })
-              if (updatedPlayer.y > 50) updatedPlayer.gameOver = true
+              if (updatedPlayer.y > 20) updatedPlayer.gameOver = true
               set({
                 player: updatedPlayer,
                 contestants: updatedContestants,

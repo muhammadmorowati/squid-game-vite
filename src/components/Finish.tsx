@@ -1,4 +1,5 @@
 import { useGameStore } from "../hooks/UseGameStore"
+import Winner from "./Winner"
 
 const Finish = () => {
 
@@ -7,7 +8,7 @@ const Finish = () => {
     return (
         <>
             <div
-                className="bg-red-600 absolute h-1 w-[100vw] top-20"
+                className="bg-red-600 absolute h-1 w-[100vw] top-20 max-sm:top-14"
             >
                 <img 
                     className="absolute left-1/2 max-sm:left-1/3 bottom-0" 
@@ -19,9 +20,8 @@ const Finish = () => {
             </div>
 
             {allFinished && !gameOver && (
-                <>
-               
-                </>
+                // <Winner />
+                <></>
             )}
         </>
     )
