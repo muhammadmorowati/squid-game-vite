@@ -1,15 +1,14 @@
+import { useGameStore } from "../hooks/UseGameStore"
 
-type Props = {
-    isGameOver: boolean
-    allPlayerFinished: boolean
-}
+const Finish = () => {
 
-const Finish = (props: Props) => {
-    const { isGameOver, allPlayerFinished } = props
+    const { gameOver, allFinished } = useGameStore()
   
     return (
         <>
-            <div className="bg-red-600 absolute h-1 w-[100vw] top-20">
+            <div
+                className="bg-red-600 absolute h-1 w-[100vw] top-20"
+            >
                 <img 
                     className="absolute left-1/2 max-sm:left-1/3 bottom-0" 
                     src={'/tree_prev_ui.png'}
@@ -19,18 +18,8 @@ const Finish = (props: Props) => {
                 />
             </div>
 
-            {isGameOver && (
+            {allFinished && !gameOver && (
                 <>
-                        <img src={"/lose-game123-ezgif.com-gif-to-webp-converter.webp"} alt={""} />
-                            <button className="mt-4">
-                                Restart Game
-                            </button>
-                </>
-            )}
-
-            {allPlayerFinished && !isGameOver && (
-                <>
-                        <img src={"/winning-gif.gif"} alt={""} />
                
                 </>
             )}

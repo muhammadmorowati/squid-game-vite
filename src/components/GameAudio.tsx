@@ -1,19 +1,20 @@
 import { Howl } from 'howler'
 import { useEffect, useRef } from 'react'
+import { useGameStore } from '../hooks/UseGameStore'
 
-type GameAudioProps = {
-  greenLight: boolean
-}
 
- const GameAudio = ({ greenLight }: GameAudioProps) => {
+const GameAudio = () => {
+
+   const { greenLight } = useGameStore()
   const greenLightSound = useRef<Howl | null>(null)
 
   useEffect(() => {
     if (!greenLightSound.current) {
       greenLightSound.current = new Howl({
-        src: ['/sounds/green-light.mp3'], // Replace with actual file path
+        src: ['/sounds/green-light.mp3'],
         volume: 0.5,
-        loop: false, // Prevent looping, so it cuts off when red light happens
+        // Prevent looping, so it cuts off when red light happens
+        loop: false, 
         rate: 1, // Default speed
       })
     }
@@ -25,11 +26,13 @@ type GameAudioProps = {
       
       greenLightSound.current.play()
     } else {
-      greenLightSound.current.stop() // Stop completely on red light
+       // Stop completely on red light
+      greenLightSound.current.stop()
     }
 
     return () => {
-      greenLightSound.current?.stop() // Ensure it stops when unmounting
+      // Ensure it stops when unmounting
+      greenLightSound.current?.stop() 
     }
   }, [greenLight])
 

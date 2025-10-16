@@ -8,8 +8,9 @@ type Props = {
      gameOver: boolean
 }
 
-const Contestant = ({ x, y, name, gameOver }: Props) => {
+const Contestant = (props: Props) => {
 
+    const { x, y, name, gameOver } = props
     const [visible, setVisible] = useState(true)
     
     useEffect(() => {
@@ -22,24 +23,25 @@ const Contestant = ({ x, y, name, gameOver }: Props) => {
         }
     }, [gameOver])
     if (!visible) return null
-// Hide the player after explosion 
+    // Hide the player after explosion 
+    
     return (
         <AnimatePresence>
             
             <motion.div
                
-               className="absolute"
+                className="absolute"
                 key={name}
                 style={{ left: `${x}px`, top: `${y}px` }}
                 initial={{ opacity: 1, scale: 1 }}
-            animate={gameOver ? { scale: [1, 1.5, 0], opacity: [1, 0.5, 0] } :
-            {}} transition={{ duration: 1, ease: 'easeOut' }}
+                animate={gameOver ? { scale: [1, 1.5, 0], opacity: [1, 0.5, 0] } :
+                    {}} transition={{ duration: 1, ease: 'easeOut' }}
                 exit={{ opacity: 0 }}
- // Fade out when removed
->
+                // Fade out when removed
+            >
             <div className="">
                 {gameOver ? ( 
-// Explosion animation when the player is eliminated
+                        // Explosion animation when the player is eliminated
                     <img
                         src={'/kill-blood.png'}
                         alt={'explosion'}
@@ -47,13 +49,28 @@ const Contestant = ({ x, y, name, gameOver }: Props) => {
                         height={50}
                         className='max-sm:w-10 max-sm:h-12'
                     />) : ( 
-// Normal player image
-                            <img src={'/player.png'} alt={'player'} width={50} height={50} className='max-sm:w-10 max-sm:h-12' />
+                            // Normal player image
+                            <img 
+                            src={'/player.png'}
+                             alt={'player'}
+                             width={50} 
+                            height={50} 
+                            className='max-sm:w-10 max-sm:h-12' 
+                            />
                     )}
- <div 
- className="absolute inset-0 top-2 flex justify-center items-center text-white text-xs md:font-bold max-md:text-[6px]"
-  > {name} </div>
-   </div> 
-   </motion.div>
-    </AnimatePresence >) }
+
+                    <div 
+                        className="absolute inset-0 top-2 flex justify-center items-center text-white text-xs md:font-bold max-md:text-[6px]"
+                    >
+                        {name}
+                    </div>
+   
+                </div> 
+  
+            </motion.div>
+  
+        </AnimatePresence >
+    )
+}
+
 export default Contestant
