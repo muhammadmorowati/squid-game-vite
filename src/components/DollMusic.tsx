@@ -2,37 +2,45 @@ import { useEffect, useRef } from 'react'
 import { Howl } from 'howler'
 import { useGameStore } from '../hooks/UseGameStore'
 
-
 const DollMusic = () => {
-
-   const { greenLight, greenLightCounter } = useGameStore()
-   const greenLightSound = useRef<Howl | null>(null)
+  const { greenLight, greenLightCounter } = useGameStore()
+  const greenLightSound = useRef<Howl | null>(null)
 
   useEffect(() => {
+    // Create the sound once
     if (!greenLightSound.current) {
       greenLightSound.current = new Howl({
         src: ['/sounds/green-light.mp3'],
-        volume: 0.5,
+        volume: 0.7,
         loop: false,
-        rate: 1, // Default speed
       })
     }
 
-    if (greenLight) {
-      // Set playback speed based on green light duration (shorter = faster)
-      const minDuration = 100 // Minimum duration
-      const maxDuration = 200 // Maximum duration
-      const speed = 1 + (1 * (1 - (greenLightCounter - minDuration) / (maxDuration - minDuration)))
+    const sound = greenLightSound.current
 
-      greenLightSound.current.rate(speed)
-      greenLightSound.current.play()
+    if (greenLight) {
+      // Convert counter (~60fps) → milliseconds
+      const greenLightDuration = greenLightCounter * (1000 / 60)
+
+      // The full length of your sound in ms (4.7 seconds)
+      const baseAudioDuration = 4700
+
+      // Calculate playback rate to perfectly sync the full song
+      const rate = baseAudioDuration / greenLightDuration
+
+      // Clamp the rate to avoid audio distortion
+      const clampedRate = Math.min(Math.max(rate, 0.5), 3)
+
+      // Restart and play at calculated rate
+      sound.stop()
+      sound.rate(clampedRate)
+      sound.play()
     } else {
-      // Stop on red light
-      greenLightSound.current.stop() 
+      sound.stop()
     }
 
     return () => {
-      greenLightSound.current?.stop()
+      sound.stop()
     }
   }, [greenLight, greenLightCounter])
 
