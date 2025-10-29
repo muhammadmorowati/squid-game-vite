@@ -12,7 +12,7 @@ const HomePage = () => {
           className="sm:min-h-96 rounded sm:w-[500px] w-[90%] bg-slate-400 p-6 flex flex-col items-center"
         >
           <img 
-          src="/squid-game-start.jpg" 
+          src="squid-game-start.jpg" 
             alt="squid-game-start"
             width={400}
            height={300} 

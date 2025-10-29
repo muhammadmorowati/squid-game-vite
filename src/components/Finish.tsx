@@ -23,13 +23,6 @@ const Finish = () => {
         ></span>
 )}
 
-             <img 
-                    className="absolute left-1/2 max-sm:left-1/3 bottom-0" 
-                    src={'/tree_prev_ui.png'}
-                    alt={'doll'}
-                    width={150} 
-                    height={150}
-                />
             </div>
 
             {allFinished && !gameOver && (             

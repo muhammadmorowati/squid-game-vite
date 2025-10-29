@@ -10,7 +10,7 @@ const DollMusic = () => {
     // Create the sound once
     if (!greenLightSound.current) {
       greenLightSound.current = new Howl({
-        src: ['/sounds/green-light.mp3'],
+        src: ['sounds/green-light.mp3'],
         volume: 0.7,
         loop: false,
       })

@@ -16,7 +16,7 @@ const Contestant = (props: Props) => {
     useEffect(() => {
         if (gameOver) {
 // Play bullet sound effect 
-            const bulletSound = new Audio('/sounds/MLG sniper sound effect.mp3')
+            const bulletSound = new Audio('sounds/MLG sniper sound effect.mp3')
             bulletSound.play()
 // Remove player after explosion animation
             setTimeout(() => setVisible(false), 1000)
@@ -43,7 +43,7 @@ const Contestant = (props: Props) => {
                 {gameOver ? ( 
                         // Explosion animation when the player is eliminated
                     <img
-                        src={'/kill-blood.png'}
+                        src={'kill-blood.png'}
                         alt={'explosion'}
                         width={50}
                         height={50}
@@ -51,7 +51,7 @@ const Contestant = (props: Props) => {
                     />) : ( 
                             // Normal player image
                             <img 
-                            src={'/player.png'}
+                            src={'player.png'}
                              alt={'player'}
                              width={40} 
                             height={40} 

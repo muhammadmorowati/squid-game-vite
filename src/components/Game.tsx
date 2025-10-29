@@ -62,7 +62,7 @@ const Game = () => {
       {/* Doll Image */}
       <img
         className="absolute left-1/2 -translate-x-1/2 z-40 max-sm:left-1/3"
-        src="/doll.png"
+        src="doll.png"
         alt="doll"
         width={150}
         height={150}
