@@ -1,56 +1,50 @@
-import { useEffect, useRef } from 'react'
-import { Howl } from 'howler'
-import { useGameStore } from '../hooks/UseGameStore'
+import { useEffect, useRef } from "react";
+import { Howl } from "howler";
+import { useGameStore } from "../hooks/UseGameStore";
 
 const DollMusic = () => {
-  const { greenLight, greenLightCounter,timeLeft } = useGameStore()
-  const greenLightSound = useRef<Howl | null>(null)
+  const { greenLight, greenLightCounter, timeLeft } = useGameStore();
+  const greenLightSound = useRef<Howl | null>(null);
+
+  // 🎵 Preload sound on mount
+  useEffect(() => {
+    greenLightSound.current = new Howl({
+      src: ["sounds/green-light.mp3"],
+      volume: 0.7,
+      preload: true,
+    });
+  }, []);
 
   useEffect(() => {
-    // Create the sound once
-    if (!greenLightSound.current) {
-      greenLightSound.current = new Howl({
-        src: ['sounds/green-light.mp3'],
-        volume: 0.7,
-        loop: false,
-      })
-    }
+  const sound = greenLightSound.current;
+  if (!sound) return; // اگر هنوز ساخته نشده، کاری نکن
 
-    const sound = greenLightSound.current
+  // وقتی تایمر تموم میشه صدا رو قطع کن
+  if (timeLeft === 0) {
+    sound.stop();
+    return;
+  }
 
-    // ✅ Stop music if time is up
-    if (timeLeft == 0) {
-      sound.stop()
-      return
-    }
+  if (greenLight) {
+    const greenLightDuration = greenLightCounter * (1000 / 60);
+    const baseAudioDuration = 4700;
+    const rate = baseAudioDuration / greenLightDuration;
+    const clampedRate = Math.min(Math.max(rate, 0.5), 3);
 
-    if (greenLight) {
-      // Convert counter (~60fps) → milliseconds
-      const greenLightDuration = greenLightCounter * (1000 / 60)
+    sound.stop();
+    sound.rate(clampedRate);
+    sound.play();
+  } else {
+    sound.stop();
+  }
 
-      // The full length of your sound in ms (4.7 seconds)
-      const baseAudioDuration = 4700
+  // ✅ تابع cleanup همیشه یا void یا تابع معتبر برمی‌گردونه
+  return () => {
+    if (sound) sound.stop();
+  };
+}, [greenLight, greenLightCounter]);
 
-      // Calculate playback rate to perfectly sync the full song
-      const rate = baseAudioDuration / greenLightDuration
+  return null;
+};
 
-      // Clamp the rate to avoid audio distortion
-      const clampedRate = Math.min(Math.max(rate, 0.5), 3)
-
-      // Restart and play at calculated rate
-      sound.stop()
-      sound.rate(clampedRate)
-      sound.play()
-    } else {
-      sound.stop()
-    }
-
-    return () => {
-      sound.stop()
-    }
-  }, [greenLight, greenLightCounter])
-
-  return null
-}
-
-export default DollMusic
+export default DollMusic;
