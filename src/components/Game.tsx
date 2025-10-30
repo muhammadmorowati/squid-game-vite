@@ -9,7 +9,7 @@ import Timer from "./Timer";
 import { useGameStore } from "../hooks/UseGameStore";
 
 const Game = () => {
-  const { player, contestants, gameStarted, phase } = useGameStore();
+  const { player, contestants, gameStarted, phase,setGameStarted,resetGame } = useGameStore();
   const [countdown, setCountdown] = useState(3);
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
@@ -90,8 +90,21 @@ const Game = () => {
     return <HomePage />;
   }
 
+  // 🏁 Handle Exit Button Click
+  const handleExit = () => {
+    resetGame();
+    setGameStarted(false);
+  };
+
   return (
     <div className="bg-orange-300 h-screen w-screen absolute overflow-hidden">
+        {/* 🟠 Exit Button (Top Right) */}
+      <button
+        onClick={handleExit}
+        className="absolute top-4 right-4 z-50 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300"
+      >
+        X
+      </button>
       {phase === "running" && <Timer />}
 
       {phase === "countdown" && (
