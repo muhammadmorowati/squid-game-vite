@@ -1,35 +1,7 @@
 import { create } from 'zustand'
 import { subscribeWithSelector } from 'zustand/middleware'
 import { Random } from 'random-js'
-
-export type ContestantType = {
-  x: number
-  y: number
-  name: string
-  gameOver: boolean
-  speed: number
-  winner: boolean
-}
-
-type Phase = 'idle' | 'countdown' | 'running' | 'finished'
-
-type GameState = {
-  timeLeft: number
-  gameStarted: boolean
-  allFinished: boolean
-  gameOver: boolean
-  greenLight: boolean
-  greenLightCounter: number
-  moving: boolean
-  phase: Phase
-  player: ContestantType
-  contestants: ContestantType[]
-
-  setGameStarted: (value: boolean) => void
-  onMoveStart: () => void
-  onMoveStop: () => void
-  resetGame: () => void
-}
+import type { GameState, ContestantType } from './types'
 
 // --- Safe window access ---
 const getWindowSafe = () => (typeof window !== 'undefined' ? window : undefined)

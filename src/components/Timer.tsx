@@ -1,6 +1,7 @@
 import { useGameStore } from "../hooks/UseGameStore"
 
 const Timer = () => {
+  
   const { timeLeft, greenLight } = useGameStore()
 
   // choose light color

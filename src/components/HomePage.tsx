@@ -21,7 +21,8 @@ const HomePage = () => {
             Squid Game Online
           </h1>
          <button
-            className="font-sans cursor-pointer mt-4 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg shadow-lg transition duration-300"
+            className="font-sans cursor-pointer mt-4 px-6 py-3 bg-green-500
+             hover:bg-green-600 text-white font-bold rounded-lg shadow-lg transition duration-300"
             onClick={() => setGameStarted(true)}
           >
 
