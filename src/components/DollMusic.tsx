@@ -3,7 +3,7 @@ import { Howl } from "howler";
 import { useGameStore } from "../hooks/UseGameStore";
 
 const DollMusic = () => {
-  const { greenLight, greenLightCounter, timeLeft } = useGameStore();
+  const { greenLight, greenLightCounter, timeLeft,allFinished } = useGameStore();
   const greenLightSound = useRef<Howl | null>(null);
 
   // 🎵 Preload sound on mount
@@ -20,7 +20,7 @@ const DollMusic = () => {
   if (!sound) return; // اگر هنوز ساخته نشده، کاری نکن
 
   // وقتی تایمر تموم میشه صدا رو قطع کن
-  if (timeLeft === 0) {
+  if (timeLeft === 0 || allFinished) {
     sound.stop();
     return;
   }
