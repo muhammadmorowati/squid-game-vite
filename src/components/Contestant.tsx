@@ -44,13 +44,6 @@ const Contestant = ({ x, y, name, gameOver, isPlayer = false }: Props) => {
         transition={{ duration: 1, ease: "easeOut" }}
         exit={{ opacity: 0 }}
       >
-        {/* 🏷️ Add label or arrow for player */}
-        {isPlayer && (
-          <div className="mb-1 text-yellow-300 font-bold text-xs md:text-sm animate-pulse">
-            ⬇
-          </div>
-        )}
-
         <div
           className={`relative rounded-full ${
             isPlayer ? "ring-4 ring-yellow-400" : ""
