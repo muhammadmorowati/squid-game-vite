@@ -7,7 +7,10 @@ const PlayerButton = () => {
            gameOver,
            resetGame} = useGameStore()
     
-  const baseButtonClasses = "font-sans absolute left-1/2 transform -translate-x-1/2 top-1/3 min-[2000px]:w-40 min-[2000px]:h-20 min-[2000px]:text-3xl z-50 px-6 py-3 font-bold rounded-lg shadow-lg transition duration-300";
+  const baseButtonClasses =    "font-sans absolute left-1/2 transform -translate-x-1/2 top-1/3 " +
+    "min-[2000px]:w-40 min-[2000px]:h-20 min-[2000px]:text-3xl " +
+    "z-50 px-6 py-3 font-bold rounded-lg shadow-lg transition duration-300 " +
+    "select-none touch-none active:scale-95"
 
   return (
     <>
