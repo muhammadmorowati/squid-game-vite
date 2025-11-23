@@ -1,73 +1,84 @@
-# React + TypeScript + Vite
+🦑 Squid Game — Red Light, Green Light (Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fast, animation-driven Squid Game: Red Light, Green Light experience powered by React 19, Vite 7, Tailwind 4, and Zustand.
+Built for performance, smooth gameplay, and realistic audio feedback using Howler.
 
-Currently, two official plugins are available:
+Play it live here:
+👉 https://muhammadmorowati.itch.io/red-light-green-light
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Tech Stack
+Core
 
-## React Compiler
+React 19
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+ReactDOM 19
 
-## Expanding the ESLint configuration
+Vite 7 (blazing-fast dev server + optimized builds)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+TypeScript 5
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Styling & UI
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Tailwind CSS v4.1
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Framer Motion for transitions, character movement, screen animations
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+State Management
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Zustand — simple, predictable global state store
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Game Logic
+
+random-js — RNG for gameplay decisions
+
+Timers, state switching, elimination logic
+
+Event-based reactivity for gameplay flow
+
+Audio
+
+Howler — dynamic sound effects (footsteps, freeze signal, elimination sounds)
+
+Supports background ambience + layered FX
+
+Developer Tooling
+
+ESLint 9
+
+React Refresh
+
+@vitejs/plugin-react
+
+TypeScript ESLint
+
+Hot reload with zero config
+
+🎮 Features
+
+🟥 Red Light / Green Light mechanic
+
+🐦 Smooth character movement animations
+
+🔊 Fully integrated sound engine
+
+🧠 Global game state managed via Zustand
+
+⏳ Randomized timing for red/green phases using random-js
+
+🌐 Deployment (itch.io)
+
+Your game is deployed here:
+👉 https://muhammadmorowati.itch.io/red-light-green-light
+
+To deploy updates:
+
+Run npm run build
+
+Upload the dist/ folder contents as a Web Build on itch.io
+
+Enable "Run game in browser"
+
+Set viewport / fullscreen options as needed
+📱 Responsive layout thanks to Tailwind
+
+🏁 Clean, modular, extensible code structure
